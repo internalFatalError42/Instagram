@@ -10,7 +10,7 @@
   /* Firefox */
 * {
     scrollbar-width: auto;
-    scrollbar-color: #008000 #cfcfcf;
+    scrollbar-color: #022405 #cfcfcf;
     font-family: main-font, 'PT Sans', sans-serif;
     box-sizing: border-box;
     margin: 0;
@@ -23,11 +23,11 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: #6a2424;
+    background: #f1f0f0;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #042f05;
+    background-color: #022405;
     border-radius: 10px;
     border: 3px solid #ffffff;
 }
@@ -102,6 +102,31 @@ header {
 main {
     padding-top: 72px;
     background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.users {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px;
+    margin-bottom: 10px;
+    /* border: 1px solid #cfcfcf; */
+    /* border-radius: 16px; */
+    width: 50%;
+
+}
+
+.users img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .main-section {
@@ -118,9 +143,16 @@ main {
 .post-author {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding-left: 16px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .author-img {
@@ -136,17 +168,20 @@ main {
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
-    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    margin-bottom: 8px;
 }
 
 .actions {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
     padding: 0 16px;
+    margin-bottom: 8px;
+
 }
 
-.like-img, .talk-img, .send-img {
+.more,.like-img, .talk-img, .send-img, .bookmark  {
     width: 24px;
     height: 24px;
     object-fit: cover;
@@ -155,17 +190,23 @@ main {
 
 .likes {
     padding: 0 16px;
+    margin-bottom: 8px;
 }
 
 .comments {
     padding: 0 16px;
+    margin-bottom: 8px;
+}
+
+.comment-input-section {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .comment {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
 .comment-input {
@@ -173,8 +214,21 @@ main {
     align-items: center;
     gap: 10px;
     padding: 8px;
-    margin-left: 16px;
-    margin-bottom: 10px;
+    width: 80%;
+    border: 1px solid #cfcfcf;
+    border-radius: 16px;
+}
+
+.comment-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: blue;
+    padding: 0 8px;
+}
+
+.comment-btn:hover {
+    text-decoration: underline;
     border: 1px solid #cfcfcf;
     border-radius: 16px;
 }

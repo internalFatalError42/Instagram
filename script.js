@@ -4,6 +4,7 @@ let posts = [
     {
         'id': 0,
         'author': 'Rick Sanchez',
+        'creationDate': '1.5.2023',
         'authorImg': 'img/avatars/avatar1.svg',
         'img': 'img/postImg/burn_house.webp',
         'likes': 13,
@@ -22,6 +23,7 @@ let posts = [
     {
         'id': 1,
         'author': 'Randy Marsh',
+        'creationDate': '12.7.2023',
         'authorImg': 'img/avatars/avatar2.svg',
         'img': 'img/postImg/harold.jpg',
         'likes': 42,
@@ -40,6 +42,7 @@ let posts = [
     {
         'id': 2,
         'author': 'Agent Smith',
+        'creationDate': '17.12.2023',
         'authorImg': 'img/avatars/avatar3.svg',
         'img': 'img/postImg/nice.webp',
         'likes': 0,
@@ -63,6 +66,7 @@ const createAuthorTemplate = (post) => {
             <div class="author">
                 <img class="author-img" src="${post.authorImg}" alt="author">
                 <p class="author-name">${post.author}</p>
+                <p class="creation-date">${post.creationDate}</p>
             </div>
             <img class="more" src="img/dots_v.png">
         </div>
@@ -131,18 +135,25 @@ const createComments = (comments, id) => {
 };
 
 const saveComment = (id) => {
-    let comment = document.getElementById('comment-'+ id).value;
-    let commentsSection = document.getElementById('comments-'+ id);
+    let comment = document.getElementById('comment-'+ id).value,
+        commentsSection = document.getElementById('comments-'+ id);
+
     if (comment === '') {
         return;
     }
+
     commentsSection.innerHTML += /*html*/`
         <div class="comment">
             <p class="author-name"><b>You</b></p>
             <p class="comment-text">${comment}</p>
         </div>
     `;
+
     document.getElementById('comment-'+ id).value = '';
+    saveCommentToPosts(id, comment);
+};
+
+const saveCommentToPosts = (id, comment) => {
     posts[id].comments.push({
         'author': 'You',
         'comment': comment,
@@ -174,5 +185,10 @@ const load = () => {
     if (localStorage.getItem('posts')) {
         posts = JSON.parse(localStorage.getItem('posts'));
     }
+
     createPosts();
 };
+
+const windowReload = () => {
+    window.location.reload();
+}
